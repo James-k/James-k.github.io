@@ -19,7 +19,7 @@
         }, {
             id: "AllocationYear",
             alias: "AllocationYear",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.float
         }, {
             id: "AllocationSourceName",
             alias: "AllocationSourceName",
