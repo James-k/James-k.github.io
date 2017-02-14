@@ -9,11 +9,11 @@
             alias: "PooledFundId",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "PoolFundName",
+            id: "PooledFundName",
             alias: "PoolFundName",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "PoolFundCodeAbbrv",
+            id: "PooledFundCodeAbbrv",
             alias: "PoolFundCodeAbbrv",
             dataType: tableau.dataTypeEnum.string
         }, {
@@ -23,7 +23,7 @@
         }, {
             id: "FiscalYear",
             alias: "FiscalYear",
-            dataType: tableau.dataTypeEnum.strin
+            dataType: tableau.dataTypeEnum.string
         }, {
             id: "DonorName",
             alias: "DonorName",
@@ -39,27 +39,27 @@
         }, {
             id: "GMSDonorName",
             alias: "GMSDonorName",
-            dataType: tableau.dataTypeEnum.float
+            dataType: tableau.dataTypeEnum.string
         }, {
             id: "CountryCode",
             alias: "CountryCode",
-            dataType: tableau.dataTypeEnum.float
+            dataType: tableau.dataTypeEnum.string
         }, {
             id: "PledgeDate",
             alias: "PledgeDate",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.datetime
         }, {
             id: "PledgeAmt",
             alias: "PledgeAmt",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.float
         }, {
             id: "PipeLineDate",
             alias: "PipeLineDate",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.datetime
         }, {
             id: "PaidDate",
             alias: "PaidDate",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.datetime
         }, {
             id: "PaidAmt",
             alias: "PaidAmt",
@@ -67,15 +67,15 @@
         }, {
             id: "ExpectedDate",
             alias: "ExpectedDate",
-            dataType: tableau.dataTypeEnum.float
+            dataType: tableau.dataTypeEnum.datetime
         }, {
             id: "PledgeAmtLocalCurrency",
             alias: "PledgeAmtLocalCurrency",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.float
         }, {
             id: "PledgeAmtCurrencyExchangeRate",
             alias: "PledgeAmtCurrencyExchangeRate",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.float
         }, {
             id: "PaidAmtLocalCurrency",
             alias: "PaidAmtLocalCurrency",
@@ -105,8 +105,8 @@
             for (var i = 0, len = val.length; i < len; i++) {
                 tableData.push({
                     "PooledFundId": val[i].PooledFundId,
-                    "PoolFundName": val[i].PoolFundName,
-                    "PoolFundCodeAbbrv": val[i].PoolFundCodeAbbrv,
+                    "PooledFundName": val[i].PoolFundName,
+                    "PooledFundCodeAbbrv": val[i].PoolFundCodeAbbrv,
                     "ContributionCode": val[i].ContributionCode,
                     "FiscalYear": val[i].FiscalYear,
                     "DonorName": val[i].DonorName,
