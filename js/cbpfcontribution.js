@@ -105,8 +105,8 @@
             for (var i = 0, len = val.length; i < len; i++) {
                 tableData.push({
                     "PooledFundId": val[i].PooledFundId,
-                    "PooledFundName": val[i].PoolFundName,
-                    "PooledFundCodeAbbrv": val[i].PoolFundCodeAbbrv,
+                    "PooledFundName": val[i].PooledFundName,
+                    "PooledFundCodeAbbrv": val[i].PooledFundCodeAbbrv,
                     "ContributionCode": val[i].ContributionCode,
                     "FiscalYear": val[i].FiscalYear,
                     "DonorName": val[i].DonorName,
