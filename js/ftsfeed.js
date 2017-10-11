@@ -68,7 +68,7 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        $.getJSON("https://cbpfapi.unocha.org/vo1/odata/Cluster", function(resp) {
+        $.getJSON("https://api.hpc.tools/v1/public/fts/flow?planid=500", function(resp) {
             var val = resp.value,
                 tableData = [];
 
