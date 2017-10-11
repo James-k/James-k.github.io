@@ -2,55 +2,47 @@
 
     // Create the connector object
     var myConnector = tableau.makeConnector();
+
+      // Init function for connector, called during every phase
+    myConnector.init = function(initCallback) {
+        tableau.authType = tableau.authTypeEnum.custom;
+        initCallback();
+    }
     
-
-
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
-            id: "PooledFundName",
-            alias: "PooledFundName",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "PooledFundId",
-            alias: "PooledFundId",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "AllocationTypeId",
-            alias: "AllocationTypeId",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "AllocationYear",
-            alias: "AllocationYear",
+            id: "fundingTotal",
+            alias: "fundingTotal",
             dataType: tableau.dataTypeEnum.float
         }, {
-            id: "AllocationSourceName",
-            alias: "AllocationSourceName",
+            id: "id",
+            alias: "id",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "ChfId",
-            alias: "ChfId",
+            id: "description",
+            alias: "description",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "ChfProjectCode",
-            alias: "ChfProjectCode",
+            id: "status",
+            alias: "status",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "Cluster",
-            alias: "Cluster",
-            dataType: tableau.dataTypeEnum.string
+            id: "date",
+            alias: "date",
+            dataType: tableau.dataTypeEnum.date
         }, {
-            id: "SubCluster",
-            alias: "SubCluster",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "Percentage",
-            alias: "Percentage",
+            id: "amountUSD",
+            alias: "amountUSD",
             dataType: tableau.dataTypeEnum.float
         }, {
-            id: "ClusterBudget",
-            alias: "ClusterBudget",
-            dataType: tableau.dataTypeEnum.float
+            id: "originalCurrency",
+            alias: "originalCurrency",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "budgetYear",
+            alias: "budgetYear",
+            dataType: tableau.dataTypeEnum.string
         }];
 
         var tableSchema = {
@@ -71,17 +63,14 @@
             // Iterate over the JSON object
             for (var i = 0, len = val.length; i < len; i++) {
                 tableData.push({
-                    "PooledFundName": val[i].PooledFundName,
-                    "PooledFundId": val[i].PooledFundId,
-                    "AllocationTypeId": val[i].AllocationTypeId,
-                    "AllocationYear": val[i].AllocationYear,
-                    "AllocationSourceName": val[i].AllocationSourceName,
-                    "ChfId": val[i].ChfId,
-                    "ChfProjectCode": val[i].ChfProjectCode,
-                    "Cluster": val[i].Cluster,
-                    "SubCluster": val[i].SubCluster,
-                    "Percentage": val[i].Percentage,
-                    "ClusterBudget": val[i].ClusterBudget,
+                    "fundingTotal": val[i].fundingTotal,
+                    "id": val[i].id,
+                    "description": val[i].description,
+                    "status": val[i].status,
+                    "date": val[i].date,
+                    "amountUSD": val[i].amountUSD,
+                    "originalCurrency": val[i].originalCurrency,
+                    "budgetYear": val[i].budgetYear,
                 });
             }
 
