@@ -3,10 +3,7 @@
     // Create the connector object
     var myConnector = tableau.makeConnector();
     
-    // Init function for connector, called during every phase
-    myConnector.init = function(initCallback) {
-        tableau.authType = tableau.authTypeEnum.custom;
-        initCallback();
+
 
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
