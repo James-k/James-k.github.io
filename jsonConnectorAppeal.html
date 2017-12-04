@@ -12,15 +12,16 @@
   var myConnector = tableau.makeConnector();
 
   myConnector.init = function () {
+    tableau.authType = tableau.authTypeEnum.custom;
     tableau.connectionName = 'JSON data';
     tableau.initCallback();
   };
 
-   // Init function for connector, called during every phase
-  myConnector.init = function(initCallback) {
-    tableau.authType = tableau.authTypeEnum.none;
-    initCallback();
-  };
+// Init function for connector, called during every phase
+// myConnector.init = function(initCallback) {
+//  tableau.authType = tableau.authTypeEnum.none;
+//  initCallback();
+// };
 
   myConnector.getColumnHeaders = function() {
     _retrieveJsonData(function (tableData) {
