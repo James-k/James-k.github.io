@@ -5,6 +5,10 @@
     // Init function for connector, called during every phase
     myConnector.init = function(initCallback) {
         tableau.authType = tableau.authTypeEnum.basic;
+
+        if (tableau.phase == tableau.phaseEnum.authPhase) {
+            $("#getvenuesbutton").css('display', 'none');
+        }
         initCallback();
     };
 
