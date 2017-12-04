@@ -12,7 +12,7 @@
   var myConnector = tableau.makeConnector();
 
   myConnector.init = function () {
-    tableau.authType = tableau.authTypeEnum.custom;
+    tableau.authType = tableau.authTypeEnum.basic;
     tableau.connectionName = 'JSON data';
     tableau.initCallback();
   };
