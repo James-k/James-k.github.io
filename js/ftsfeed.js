@@ -3,6 +3,7 @@
     // Create the connector object
     var myConnector = tableau.makeConnector();
 
+<<<<<<< HEAD
       // Init function for connector, called during every phase
     myConnector.init = function(initCallback) {
         tableau.authType = tableau.authTypeEnum.custom;
@@ -16,12 +17,26 @@
         var cols = [{
             id: "name",
             alias: "name",
+=======
+  // Init function for connector, called during every phase but
+  // only called when running inside the simulator or tableau
+  myConnector.init = function(initCallback) {
+      tableau.authType = tableau.authTypeEnum.basic;
+
+   
+    // Define the schema
+    myConnector.getSchema = function(schemaCallback) {
+        var cols = [{
+            id: "fundingTotal",
+            alias: "fundingTotal",
+>>>>>>> origin/master
             dataType: tableau.dataTypeEnum.float
         }, {
             id: "id",
             alias: "id",
             dataType: tableau.dataTypeEnum.string
         }, {
+<<<<<<< HEAD
             id: "code",
             alias: "code",
             dataType: tableau.dataTypeEnum.string
@@ -48,6 +63,30 @@
         }, {
             id: "locations",
             alias: "locations",
+=======
+            id: "description",
+            alias: "description",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "status",
+            alias: "status",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "date",
+            alias: "date",
+            dataType: tableau.dataTypeEnum.date
+        }, {
+            id: "amountUSD",
+            alias: "amountUSD",
+            dataType: tableau.dataTypeEnum.float
+        }, {
+            id: "originalCurrency",
+            alias: "originalCurrency",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "budgetYear",
+            alias: "budgetYear",
+>>>>>>> origin/master
             dataType: tableau.dataTypeEnum.string
         }];
 
@@ -69,6 +108,7 @@
             // Iterate over the JSON object
             for (var i = 0, len = val.length; i < len; i++) {
                 tableData.push({
+<<<<<<< HEAD
                     "id": val[i].fundingTotal,
                     "name": val[i].id,
                     "code": val[i].description,
@@ -79,6 +119,16 @@
                     "locations": val[i].budgetYear,
                     "categories": val[i].amountUSD,
                     "revisedRequirements": val[i].originalCurrency,
+=======
+                    "fundingTotal": val[i].fundingTotal,
+                    "id": val[i].id,
+                    "description": val[i].description,
+                    "status": val[i].status,
+                    "date": val[i].date,
+                    "amountUSD": val[i].amountUSD,
+                    "originalCurrency": val[i].originalCurrency,
+                    "budgetYear": val[i].budgetYear,
+>>>>>>> origin/master
                 });
             }
 
@@ -96,4 +146,15 @@
             tableau.submit(); // This sends the connector object to Tableau
         });
     });
+<<<<<<< HEAD
 })();
+=======
+          // Init function for connector, called during every phase
+    myConnector.init = function(initCallback) {
+
+        tableau.authType = tableau.authTypeEnum.custom;
+        
+
+    }
+}();
+>>>>>>> origin/master

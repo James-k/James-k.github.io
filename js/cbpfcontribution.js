@@ -142,4 +142,9 @@
             tableau.submit(); // This sends the connector object to Tableau
         });
     });
+    // Init function for connector, called during every phase
+    myConnector.init = function(initCallback) {
+      tableau.authType = tableau.authTypeEnum.basic base64(ocha_gms:uhgr468bcz);
+      initCallback();
+    }
 })();

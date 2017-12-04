@@ -33,26 +33,62 @@
             alias: "ChfProjectCode",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "Cluster",
-            alias: "Cluster",
+            id: "Location",
+            alias: "Location",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "SubCluster",
-            alias: "SubCluster",
+            id: "ActivityName",
+            alias: "ActivityName",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "Percentage",
             alias: "Percentage",
             dataType: tableau.dataTypeEnum.float
         }, {
-            id: "ClusterBudget",
-            alias: "ClusterBudget",
+            id: "Men",
+            alias: "Men",
+            dataType: tableau.dataTypeEnum.float
+        }, {
+            id: "Women",
+            alias: "Women",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "Boys",
+            alias: "Boys",
+            dataType: tableau.dataTypeEnum.float
+        }, {
+            id: "Girls",
+            alias: "Gilrs",
+            dataType: tableau.dataTypeEnum.float
+          }, {
+            id: "Percentage",
+            alias: "Percentage",
+            dataType: tableau.dataTypeEnum.float
+        }, {
+            id: "LocationAdminLevelLatitude",
+            alias: "LocationAdminLevelLatitude",
+            dataType: tableau.dataTypeEnum.float
+        }, {
+            id: "LocationAdminLevelLongitude",
+            alias: "LocationAdminLevelLongitude",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "AdminLocation1TypeName",
+            alias: "AdminLocation1TypeName",
+            dataType: tableau.dataTypeEnum.float
+        }, {
+            id: "AdminLocation1",
+            alias: "AdminLocation1",
+            dataType: tableau.dataTypeEnum.float
+        }, {
+            id: "AdminLocation1PCode",
+            alias: "AdminLocation1PCode",
             dataType: tableau.dataTypeEnum.float
         }];
 
         var tableSchema = {
-            id: "CBPFCluster",
-            alias: "CBPF Cluster API",
+            id: "CBPFLocation",
+            alias: "CBPF Location API",
             columns: cols
         };
 
@@ -61,7 +97,7 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        $.getJSON("https://cbpfapi.unocha.org/vo1/odata/Cluster", function(resp) {
+        $.getJSON("https://cbpfapi.unocha.org/vo1/odata/Location", function(resp) {
             var val = resp.value,
                 tableData = [];
 
@@ -75,10 +111,18 @@
                     "AllocationSourceName": val[i].AllocationSourceName,
                     "ChfId": val[i].ChfId,
                     "ChfProjectCode": val[i].ChfProjectCode,
-                    "Cluster": val[i].Cluster,
-                    "SubCluster": val[i].SubCluster,
+                    "Location": val[i].Location,
+                    "ActivityName": val[i].ActivityName,
+                    "Men": val[i].Men,
+                    "Women": val[i].Women,
+                    "Boys": val[i].Boys,
+                    "Girls": val[i].Girls,
                     "Percentage": val[i].Percentage,
-                    "ClusterBudget": val[i].ClusterBudget,
+                    "LocationAdminLevelLatitude": val[i].LocationAdminLevelLatitude,
+                    "LocationAdminLevelLongitude": val[i].LocationAdminLevelLongitude,
+                    "AdminLocation1TypeName": val[i].AdminLocation1TypeName,
+                    "AdminLocation1": val[i].AdminLocation1,
+                    "AdminLevel1PCode": val[i].AdminLevel1PCode,
                 });
             }
 
@@ -92,7 +136,7 @@
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "CBPF Cluster API"; // This will be the data source name in Tableau
+            tableau.connectionName = "CBPF Location API"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });
