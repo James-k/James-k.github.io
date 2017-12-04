@@ -12,8 +12,8 @@
   var myConnector = tableau.makeConnector();
 
   myConnector.init = function () {
-    tableau.authType = tableau.authTypeEnum.basic;
     tableau.connectionName = 'JSON data';
+    tableau.authType = tableau.authTypeEnum.basic;
     tableau.initCallback();
   };
 
