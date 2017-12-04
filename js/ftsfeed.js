@@ -1,60 +1,54 @@
-  // Init function for connector, called during every phase
-  myConnector.init = function(initCallback) {
-      tableau.authType = tableau.authTypeEnum.custom;
-      initCallback();
-  }
-
-
 (function() {
+
     // Create the connector object
     var myConnector = tableau.makeConnector();
+
+      // Init function for connector, called during every phase
+    myConnector.init = function(initCallback) {
+        tableau.authType = tableau.authTypeEnum.custom;
+        initCallback();
+    }
+    
+
 
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
-            id: "PooledFundName",
-            alias: "PooledFundName",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "PooledFundId",
-            alias: "PooledFundId",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "AllocationTypeId",
-            alias: "AllocationTypeId",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "AllocationYear",
-            alias: "AllocationYear",
+            id: "name",
+            alias: "name",
             dataType: tableau.dataTypeEnum.float
         }, {
-            id: "AllocationSourceName",
-            alias: "AllocationSourceName",
+            id: "id",
+            alias: "id",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "ChfId",
-            alias: "ChfId",
+            id: "code",
+            alias: "code",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "ChfProjectCode",
-            alias: "ChfProjectCode",
+            id: "startDate",
+            alias: "startDate",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "Cluster",
-            alias: "Cluster",
+            id: "endDate",
+            alias: "date",
+            dataType: tableau.dataTypeEnum.date
+        }, {
+            id: "category",
+            alias: "category",
+            dataType: tableau.dataTypeEnum.float  
+        }, {
+            id: "year",
+            alias: "year",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "SubCluster",
-            alias: "SubCluster",
+            id: "revisedRequirements",
+            alias: "revisedRequirements",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "Percentage",
-            alias: "Percentage",
-            dataType: tableau.dataTypeEnum.float
-        }, {
-            id: "ClusterBudget",
-            alias: "ClusterBudget",
-            dataType: tableau.dataTypeEnum.float
+            id: "locations",
+            alias: "locations",
+            dataType: tableau.dataTypeEnum.string
         }];
 
         var tableSchema = {
@@ -75,17 +69,16 @@
             // Iterate over the JSON object
             for (var i = 0, len = val.length; i < len; i++) {
                 tableData.push({
-                    "PooledFundName": val[i].PooledFundName,
-                    "PooledFundId": val[i].PooledFundId,
-                    "AllocationTypeId": val[i].AllocationTypeId,
-                    "AllocationYear": val[i].AllocationYear,
-                    "AllocationSourceName": val[i].AllocationSourceName,
-                    "ChfId": val[i].ChfId,
-                    "ChfProjectCode": val[i].ChfProjectCode,
-                    "Cluster": val[i].Cluster,
-                    "SubCluster": val[i].SubCluster,
-                    "Percentage": val[i].Percentage,
-                    "ClusterBudget": val[i].ClusterBudget,
+                    "id": val[i].fundingTotal,
+                    "name": val[i].id,
+                    "code": val[i].description,
+                    "startDate": val[i].status,
+                    "endDate": val[i].date,
+                    "emergencies": val[i].amountUSD,
+                    "years": val[i].originalCurrency,
+                    "locations": val[i].budgetYear,
+                    "categories": val[i].amountUSD,
+                    "revisedRequirements": val[i].originalCurrency,
                 });
             }
 
