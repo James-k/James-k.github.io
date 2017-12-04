@@ -5,9 +5,17 @@
 <script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 
+
+
 (function() {
 
   var myConnector = tableau.makeConnector();
+
+ // Init function for connector, called during every phase
+  myConnector.init = function(initCallback) {
+      tableau.authType = tableau.authTypeEnum.custom;
+      initCallback();
+  }
 
   myConnector.init = function () {
     tableau.connectionName = 'JSON data';
