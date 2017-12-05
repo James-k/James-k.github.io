@@ -11,11 +11,14 @@
 
   var myConnector = tableau.makeConnector();
 
-  myConnector.init = function () {
-    tableau.connectionName = 'JSON data';
-   // tableau.authType = tableau.authTypeEnum.basic;
-    tableau.initCallback();
-  };
+  myConnector.init = function(initCallback) {
+        tableau.authType = tableau.authTypeEnum.basic;
+
+        if (tableau.phase == tableau.phaseEnum.authPhase) {
+            $("#getvenuesbutton").css('display', 'none');
+        }
+        initCallback();
+    };
 
 // Init function for connector, called during every phase
 // myConnector.init = function(initCallback) {
