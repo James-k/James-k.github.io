@@ -2,7 +2,7 @@
 <head>
 <title>json Connector</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js" type="text/javascript"></script>
+<script src="https://connectors.tableau.com/libs/tableauwdc-2.1.latest.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 
@@ -13,7 +13,7 @@
 
   myConnector.init = function () {
     tableau.connectionName = 'JSON data';
-    tableau.authType = tableau.authTypeEnum.basic;
+   // tableau.authType = tableau.authTypeEnum.basic;
     tableau.initCallback();
   };
 
@@ -23,7 +23,7 @@
 //  initCallback();
 // };
 
-  myConnector.getColumnHeaders = function() {
+  myConnector.getSchema = function(schemaCallback) {
     _retrieveJsonData(function (tableData) {
       var headers = tableData.headers;
       var fieldNames = [];
@@ -35,14 +35,15 @@
           fieldTypes.push(headers[fieldName]);
         }
       }
-      tableau.headersCallback(fieldNames, fieldTypes); // tell tableau about the fields and their types
+      tableau.schemaCallback(fieldNames, fieldTypes); // tell tableau about the fields and their types
     });
   };
 
-  myConnector.getTableData = function (lastRecordToken) {
+  myConnector.getData = function(table, doneCallback) {
     _retrieveJsonData(function (tableData) {
       var rowData = tableData.rowData;
-      tableau.dataCallback(rowData, rowData.length.toString(), false);
+      table.appendRows(tableData);
+      doneCallback();
     });
   };
 
